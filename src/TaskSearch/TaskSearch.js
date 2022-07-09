@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskContext } from "./TaskContext";
+import { TaskContext } from "../TaskContext/TaskContext";
 import './TaskSearch.css';
 
 function TaskSearch(){
@@ -12,7 +12,7 @@ function TaskSearch(){
     return(
         <input 
         className="TaskSearch" 
-        placeholder="hola"
+        placeholder="Escribe la tarea que quieres buscar"
         value={searchValue}
         onChange={onSearchValueChange}
         /> 

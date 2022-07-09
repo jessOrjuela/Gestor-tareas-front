@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskContext } from "./TaskContext";
+import { TaskContext } from "../TaskContext/TaskContext";
 import './TaskCounter.css'
 
 

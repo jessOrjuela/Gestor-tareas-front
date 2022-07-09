@@ -12,6 +12,7 @@ function TaskProvider(props){
       }
        = useLocalStorage('TASK_V1',[]);
       const [searchValue,setSearchValue] = React.useState('');
+      const [openModal, setOpenModal] = React.useState(false);
       const completedTasks = tasks.filter(task => !!task.completed).length;
       const totalTasks = tasks.length;
     
@@ -42,7 +43,14 @@ function TaskProvider(props){
         newTasks.splice(taskIndex,1);
         saveTasks(newTasks);
       }
-    
+      const addTask = (text) =>{
+        const newTasks = [...tasks];
+        newTasks.push({
+          completed: false,
+          text,
+        });
+        saveTasks(newTasks);
+      }
     
     return(
         <TaskContext.Provider value={{
@@ -55,6 +63,9 @@ function TaskProvider(props){
             searchedTasks,
             completeTask,
             deleteTask,
+            addTask,
+            openModal,
+            setOpenModal,
         }}>
             {props.children}
         </TaskContext.Provider>

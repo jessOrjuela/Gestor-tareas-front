@@ -1,11 +1,12 @@
 import React from "react";
-import { TaskCounter } from "./TaskCounter";
-import { TaskSearch } from "./TaskSearch";
-import { TaskList } from "./TaskList";
-import { TaskItem } from "./TaskItem";
-import { CreateTask } from "./CreateTask";
-import { TaskContext} from "./TaskContext";
-import{Modal} from "./Modal/modal";
+import { TaskCounter } from "../TaskCounter/TaskCounter";
+import { TaskSearch } from "../TaskSearch/TaskSearch";
+import { TaskList } from "../TaskList/TaskList";
+import { TaskItem } from "../TaskItem/TaskItem";
+import { CreateTask } from "../CreateTask/CreateTask";
+import { TaskContext} from "../TaskContext/TaskContext";
+import { Modal } from "../Modal/modal";
+import { FormCreate } from "../FormCreate/FormCreate";
 
 function AppUI() {
     const {
@@ -14,6 +15,8 @@ function AppUI() {
         searchedTasks,
         completeTask,
         deleteTask,
+        openModal,
+        setOpenModal,
     } = React.useContext(TaskContext);
     return (
         <React.Fragment>
@@ -37,14 +40,14 @@ function AppUI() {
                 ))}
     
             </TaskList>
-
-<Modal>
-    <p>Holaaaaa</p>
-</Modal>
-        <CreateTask/>
-        </React.Fragment>
-    );
-    
+            {!!openModal && (
+				<Modal>
+					<FormCreate />
+				</Modal>
+			)}
+			<CreateTask setOpenModal={setOpenModal} />
+		</React.Fragment>
+	);
 
 }
 export {AppUI};

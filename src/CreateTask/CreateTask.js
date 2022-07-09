@@ -1,15 +1,15 @@
 import React from "react";
-import './CreateTask.css'
+import './CreateTask.css';
 
 function CreateTask(props){
-    const onClickButton = (msg) => {
-        alert(msg);
+    const onClickButton = () => {
+        props.setOpenModal(prevState => !prevState);
       };
       
       return (
         <button
           className="CreateTask"
-          onClick={() => onClickButton('Aquí se debería abrir el modal')}
+          onClick={onClickButton}
         >
           +
         </button>
